@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="Translator">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable bar-dark">
+        <h1 class="title">Translator</h1>
+      </ion-header-bar>
+      <ion-content>
+          <div class="list">
+              <div class='item row'>
+              <select class="col" ng-model="formData.inputSelect" ng-change="inSelectValue(formData.inputSelect)">
+                  <option ng-repeat="language in languages">{{language}}</option>
+                  </select>
+                  <select class="col col-offset-50" ng-model="formData.outputSelect" ng-change="outSelectValue(formData.outputSelect)">
+                  <option ng-repeat="language in languages">{{language}}</option>
+                  </select>
+              </div>
+          <label class="item item-input">
+    <input type="text" ng-model="text.valueIn" placeholder="Enter text" required>
+  </label>
+              <div class="list row">
+              <button class="button button-positive col col-20" ng-click="translate()">
+                  Translate
+                  </button>
+                  <button class="button button-positive col col-offset-50" ng-click="detected()">
+                  Detect language
+                  </button>
+              </div>
+              <div class="row">
+              <span class="col">
+                  {{text.valueOut}}
+                  </span>
+              </div>
+          </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
